@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VidyaPortal - Educational ERP System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #1a4f8c;
+            --secondary: #3c8dbc;
+            --accent: #f5a623;
+            --light: #f5f5f5;
+            --dark: #333;
+            --success: #28a745;
+            --danger: #dc3545;
+            --warning: #ffc107;
+            --info: #17a2b8;
+        }
+
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-left: 10px;
+        }
+
+        .nav-center {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-center a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .nav-center a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-right {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-right a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-right a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content Area */
+        .container {
+            display: flex;
+            min-height: calc(100vh - 70px - 60px);
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 250px;
+            background: var(--dark);
+            color: white;
+            height: 100%;
+            position: sticky;
+            top: 70px;
+            overflow-y: auto;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+
+        .sidebar-menu a {
+            display: block;
+            color: #ddd;
+            padding: 12px 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 15px;
+        }
+
+        .sidebar-menu a:hover {
+            background-color: #444;
+            color: white;
+        }
+
+        .sidebar-menu a.active {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .sidebar-menu i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .submenu {
+            list-style: none;
+            padding-left: 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .submenu.show {
+            max-height: 500px;
+        }
+
+        .submenu li a {
+            padding: 10px 15px;
+            font-size: 14px;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 25px;
+        }
+
+        .welcome-banner {
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .welcome-banner h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .welcome-banner p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .info-group {
+            margin-bottom: 15px;
+        }
+
+        .info-group label {
+            font-weight: 600;
+            color: var(--dark);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .info-group span {
+            color: #555;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                position: relative;
+                top: 0;
+            }
+            
+            .nav-center {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .welcome-banner h2 {
+                font-size: 24px;
+            }
+        }
+
+        /* Login Form */
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-container h2 {
+            text-align: center;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--secondary);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .user-info {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .user-info h3 {
+            margin-bottom: 5px;
+            font-size: 18px;
+        }
+
+        .user-info p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="logo.png"style="width: 100px; height: 100px; broder-radius: 100%;">
+            <h1>Vidhya Portal</h1>
+        </div>
+        
+        <div class="nav-center">
+            <a href="#home">Home</a>
+        </div>
+        
+        
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar Menu (visible after login) -->
+        <aside class="sidebar hidden" id="sidebar">
+            <div class="user-info">
+                <h3>Rahul Sharma</h3>
+                <p>ID: STU20235001</p>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="#" class="menu-toggle active"><i class="fas fa-graduation-cap"></i> My Academic</a>
+                    <ul class="submenu show">
+                        <li><a href="#"><i class="fas fa-calendar-alt"></i> Timetable</a></li>
+                        <li><a href="#"><i class="fas fa-chalkboard-teacher"></i> Today Lecture</a></li>
+                        <li><a href="#"><i class="fas fa-book"></i> Subject Note</a></li>
+                        <li><a href="#"><i class="fas fa-check-circle"></i> Attendances</a></li>
+                        <li><a href="#"><i class="fas fa-tasks"></i> My Assignment</a></li>
+                        <li><a href="#"><i class="fas fa-book-open"></i> Book Issued</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#" class="menu-toggle"><i class="fas fa-cogs"></i> Services</a>
+                    <ul class="submenu">
+                        <li><a href="#"><i class="fas fa-envelope"></i> Make Request</a></li>
+                        <li><a href="#"><i class="fas fa-download"></i> Download Certificate</a></li>
+                        <li><a href="#"><i class="fas fa-globe"></i> MOOCs</a></li>
+                        <li><a href="#"><i class="fas fa-certificate"></i> My Certificate</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><i class="fas fa-clipboard-list"></i> My Test</a></li>
+                <li><a href="#"><i class="fas fa-sticky-note"></i> Notice Board</a></li>
+                <li><a href="#"><i class="fas fa-key"></i> Change Password</a></li>
+                <li><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content" id="main-content">
+            <!-- Login Form (visible before login) -->
+            <div class="login-container" id="login-form">
+                <h2>Login</h2>
+                <div class="form-group">
+                    <label for="username">Email Id</label>
+                    <input type="text" id="username" placeholder="Enter your student ID">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password">
+                </div>
+                <button class="btn" id="login-button">Login</button>
+                <p style="text-align: center; margin-top: 15px;">
+                    <a href="#" style="color: var(--primary);">Forgot Password?</a>
+                </p>
+            </div>
+
+            <!-- Dashboard (visible after login) -->
+            <div class="hidden" id="dashboard">
+                <div class="welcome-banner">
+                    <h2>Welcome, Rahul Sharma!</h2>
+                    <p>Here you can access all your academic information, services, and resources in one place.</p>
+                </div>
+
+                <div class="dashboard-cards">
+                    <div class="card">
+                        <h3>Academic Details</h3>
+                        <div class="info-group">
+                            <label>Course</label>
+                            <span>Bachelor of Computer Applications (BCA)</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Semester</label>
+                            <span>4th Semester</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Batch</label>
+                            <span>2023-2026</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Class Advisor</label>
+                            <span>Dr. Priya Mehta</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Personal Details</h3>
+                        <div class="info-group">
+                            <label>Date of Birth</label>
+                            <span>15 March 2004</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Email</label>
+                            <span>rahul.sharma@example.com</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Phone</label>
+                            <span>+91 9876543210</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Address</label>
+                            <span>123 Main Street, Mumbai</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Father's Details</h3>
+                        <div class="info-group">
+                            <label>Name</label>
+                            <span>Rajesh Sharma</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Phone</label>
+                            <span>+91 9123456789</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Email</label>
+                            <span>rajesh.sharma@example.com</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Occupation</label>
+                            <span>Business</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Mother's Details</h3>
+                        <div class="info-group">
+                            <label>Name</label>
+                            <span>Sunita Sharma</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Phone</label>
+                            <span>+91 9234567890</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Email</label>
+                            <span>sunita.sharma@example.com</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Occupation</label>
+                            <span>Teacher</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2025 VidyaPortal Educational ERP System. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginButton = document.getElementById('login-button');
+            const loginForm = document.getElementById('login-form');
+            const dashboard = document.getElementById('dashboard');
+            const sidebar = document.getElementById('sidebar');
+            
+            // Toggle submenus
+            const menuToggles = document.querySelectorAll('.menu-toggle');
+            menuToggles.forEach(toggle => {
+                toggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const submenu = this.nextElementSibling;
+                    submenu.classList.toggle('show');
+                });
+            });
+            
+            // Login functionality
+            loginButton.addEventListener('click', function() {
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                
+                // Simple validation
+                if (username && password) {
+                    loginForm.classList.add('hidden');
+                    dashboard.classList.remove('hidden');
+                    sidebar.classList.remove('hidden');
+                } else {
+                    alert('Please enter both Student ID and Password');
+                }
+            });
+            
+            // Simulate login for demonstration
+            setTimeout(function() {
+                // Auto-fill for demonstration
+                document.getElementById('username').value = 'STU20235001';
+                document.getElementById('password').value = 'password123';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
