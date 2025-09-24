@@ -1,0 +1,2173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vidya Portal - Excellence in Education since 1990</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #1a5276;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .header-top {
+            display: flex;
+            justify-content: center; /* Center align the logo and name */
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 50px;
+            height: 50px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #1a5276;
+            font-weight: bold;
+            font-size: 20px;
+        }
+        
+        .institution-name {
+            font-size: 28px;
+            font-weight: bold;
+        }
+        
+        .tagline {
+            font-size: 14px;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+            background-color: #154360;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        
+        nav ul li {
+            margin: 0 10px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 3px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background-color: #1a5276;
+        }
+        
+        /* Main Content Styles */
+        main {
+            padding: 30px 0;
+            min-height: calc(100vh - 200px);
+        }
+        
+        .welcome-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .welcome-section h1 {
+            color: #1a5276;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #1a5276;
+            padding-bottom: 10px;
+        }
+        
+        .news-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .news-section h2 {
+            color: #1a5276;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #1a5276;
+            padding-bottom: 10px;
+        }
+        
+        .news-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .news-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .news-item h3 {
+            color: #154360;
+            margin-bottom: 5px;
+        }
+        
+        /* Login Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 5px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        .close {
+            position: absolute;
+            right: 15px;
+            top: 10px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            color: #aaa;
+        }
+        
+        .close:hover {
+            color: #000;
+        }
+        
+        .login-form h2 {
+            color: #1a5276;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+        
+        .login-btn {
+            background-color: #1a5276;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .login-btn:hover {
+            background-color: #154360;
+        }
+        
+        /* Dashboard Styles */
+        .dashboard {
+            display: none;
+        }
+        
+        .dashboard-header {
+            background-color: #1a5276;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .dashboard-content {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 20px;
+        }
+        
+        .sidebar {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 10px;
+        }
+        
+        .sidebar-menu a {
+            display: block;
+            padding: 10px;
+            background-color: #f5f5f5;
+            border-radius: 3px;
+            text-decoration: none;
+            color: #333;
+            transition: background-color 0.3s;
+        }
+        
+        .sidebar-menu a:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .main-content {
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        
+        .user-info {
+            margin-bottom: 20px;
+        }
+        
+        .user-info h2 {
+            color: #1a5276;
+            margin-bottom: 10px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .info-card {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 4px solid #1a5276;
+        }
+        
+        .info-card h3 {
+            color: #154360;
+            margin-bottom: 5px;
+        }
+        
+        .action-buttons {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .action-btn {
+            background-color: #1a5276;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 3px;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        
+        .action-btn:hover {
+            background-color: #154360;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: #1a5276;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-section {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+            padding-bottom: 10px;
+        }
+        
+        .footer-bottom {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-top {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-container {
+                justify-content: center;
+                margin-bottom: 10px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+            }
+            
+            .dashboard-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+        
+        /* Submenu Styles */
+        .submenu {
+            display: none;
+            margin-left: 15px;
+            margin-top: 5px;
+        }
+        
+        .submenu li {
+            margin-bottom: 5px;
+        }
+        
+        .submenu a {
+            background-color: #e9e9e9;
+            font-size: 0.9em;
+        }
+        
+        /* Table Styles */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #1a5276;
+            color: white;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        /* Login Instructions */
+        .login-instructions {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+        
+        .login-instructions h3 {
+            color: #1a5276;
+            margin-bottom: 10px;
+        }
+        
+        .login-instructions ul {
+            margin-left: 20px;
+        }
+        
+        /* Content Card Styles */
+        .content-card {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            border-left: 4px solid #1a5276;
+        }
+        
+        .content-card h3 {
+            color: #154360;
+            margin-bottom: 10px;
+        }
+        
+        .btn {
+            background-color: #1a5276;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+            margin-right: 10px;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #154360;
+        }
+        
+        .btn-secondary {
+            background-color: #7f8c8d;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #6c7b7d;
+        }
+        
+        .lecture-card {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        .lecture-time {
+            font-weight: bold;
+            color: #1a5276;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.8em;
+            font-weight: bold;
+        }
+        
+        .status-completed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-upcoming {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-pending {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .status-approved {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-rejected {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .admin-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .stat-card {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .stat-card h3 {
+            color: #1a5276;
+            margin-bottom: 10px;
+        }
+        
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #154360;
+        }
+        
+        .form-container {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .notification-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-top">
+                <div class="logo-container">
+                    <div class="logo">VP</div>
+                    <div class="institution-name">Vidya Portal</div>
+                </div>
+            </div>
+            <div class="tagline">Excellence in education since 1990</div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                    <li><a href="#" class="nav-link" data-page="courses">Courses</a></li>
+                    <li><a href="#" class="nav-link" data-page="admissions">Admissions</a></li>
+                    <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                    <li><a href="#" id="login-btn">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Home Page Content -->
+            <div id="home-page" class="page-content">
+                <section class="welcome-section">
+                    <h1>Welcome to Vidya Portal</h1>
+                    <p>Vidya Portal is a premier educational institution dedicated to providing quality education and fostering holistic development of students. With over three decades of excellence, we continue to shape future leaders.</p>
+                </section>
+                
+                <section class="news-section">
+                    <h2>Latest News & Announcements</h2>
+                    <div class="news-item">
+                        <h3>Admissions open for 2024-25 academic session</h3>
+                        <p>We are now accepting applications for the upcoming academic year. Apply now to secure your place in our prestigious institution.</p>
+                    </div>
+                    <div class="news-item">
+                        <h3>New courses launched in Computer Science and Business Administration</h3>
+                        <p>Expand your horizons with our newly introduced specialized courses designed to meet industry demands.</p>
+                    </div>
+                    <div class="news-item">
+                        <h3>Annual college festival 'Vidya Utsav' scheduled for next month</h3>
+                        <p>Get ready for three days of cultural extravaganza, competitions, and celebrations from 15th to 17th November.</p>
+                    </div>
+                    <div class="news-item">
+                        <h3>Scholarship applications now being accepted for meritorious students</h3>
+                        <p>Financial assistance available for deserving candidates. Last date for application is 30th October.</p>
+                    </div>
+                    <div class="news-item">
+                        <h3>Workshop on career guidance and placement preparation</h3>
+                        <p>Learn essential skills for job interviews and career development in our special workshop on 25th October.</p>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Student Dashboard -->
+            <div id="student-dashboard" class="dashboard">
+                <div class="dashboard-header">
+                    <h1>Welcome, <span id="student-name">Student Name</span></h1>
+                    <p>Here you can access all your academic information, services, and resources in one place.</p>
+                </div>
+                
+                <div class="dashboard-content">
+                    <div class="sidebar">
+                        <ul class="sidebar-menu">
+                            <li><a href="#" class="menu-item" data-content="academic">My Academic</a>
+                                <ul class="submenu">
+                                    <li><a href="#" class="submenu-item" data-content="timetable">Timetable</a></li>
+                                    <li><a href="#" class="submenu-item" data-content="lecture">Today's Lecture</a></li>
+                                    <li><a href="#" class="submenu-item" data-content="notes">Subject Notes</a></li>
+                                    <li><a href="#" class="submenu-item" data-content="attendance">Attendance</a></li>
+                                    <li><a href="#" class="submenu-item" data-content="assignment">My Assignment</a></li>
+                                    <li><a href="#" class="submenu-item" data-content="books">Books Issued</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="menu-item" data-content="services">Services</a>
+                                <ul class="submenu">
+                                    <li><a href="#" class="submenu-item" data-content="request">Make Request</a></li>
+                                    <li><a href="#" class="submenu-item" data-content="download">Download Certificate</a></li>
+                                    <li><a href="#" class="submenu-item" data-content="moocs">MOOCs</a></li>
+                                    <li><a href="#" class="submenu-item" data-content="certificate">My Certificate</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="menu-item" data-content="test">My Test</a></li>
+                            <li><a href="#" class="menu-item" data-content="notice">Notice Board</a></li>
+                            <li><a href="#" class="menu-item" data-content="password">Change Password</a></li>
+                            <li><a href="#" id="logout-btn">Logout</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="main-content">
+                        <div id="academic-info" class="content-section">
+                            <div class="user-info">
+                                <h2>Academic & Personal Details</h2>
+                                <div class="info-grid">
+                                    <div class="info-card">
+                                        <h3>Academic Details</h3>
+                                        <p>Course: B.Tech Computer Science</p>
+                                        <p>Semester: 5th</p>
+                                        <p>Roll No: <span id="student-roll">CS2023001</span></p>
+                                        <p>CGPA: 8.7/10</p>
+                                    </div>
+                                    <div class="info-card">
+                                        <h3>Personal Details</h3>
+                                        <p>Date of Birth: 15-05-2002</p>
+                                        <p>Gender: Male</p>
+                                        <p>Blood Group: O+</p>
+                                        <p>Phone: 9876543210</p>
+                                    </div>
+                                    <div class="info-card">
+                                        <h3>Father's Details</h3>
+                                        <p>Name: Rajesh Kumar</p>
+                                        <p>Occupation: Business</p>
+                                        <p>Phone: 9876543211</p>
+                                        <p>Email: rajesh.k@email.com</p>
+                                    </div>
+                                    <div class="info-card">
+                                        <h3>Mother's Details</h3>
+                                        <p>Name: Sunita Kumar</p>
+                                        <p>Occupation: Teacher</p>
+                                        <p>Phone: 9876543212</p>
+                                        <p>Email: sunita.k@email.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div id="dynamic-content" class="content-section">
+                            <!-- Dynamic content will be loaded here based on menu selection -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Faculty Dashboard -->
+            <div id="faculty-dashboard" class="dashboard">
+                <div class="dashboard-header">
+                    <h1>Welcome, <span id="faculty-name">Professor Name</span></h1>
+                    <p id="faculty-date">Today is Tuesday, October 15, 2023. You have 3 classes scheduled today.</p>
+                </div>
+                
+                <div class="dashboard-content">
+                    <div class="sidebar">
+                        <ul class="sidebar-menu">
+                            <li><a href="#" class="menu-item" data-content="attendance">Attendance</a>
+                                <ul class="submenu">
+                                    <li><a href="#" class="submenu-item" data-content="mark-attendance">Mark Attendance</a></li>
+                                    <li><a href="#" class="submenu-item" data-content="attendance-history">Attendance History</a></li>
+                                    <li><a href="#" class="submenu-item" data-content="attendance-report">Attendance Report</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#" class="menu-item" data-content="assignment">Assignment</a></li>
+                            <li><a href="#" class="menu-item" data-content="study-material">Study Material</a></li>
+                            <li><a href="#" class="menu-item" data-content="exam">Exam</a></li>
+                            <li><a href="#" class="menu-item" data-content="result">Result</a></li>
+                            <li><a href="#" class="menu-item" data-content="timetable">Timetable</a></li>
+                            <li><a href="#" class="menu-item" data-content="notices">Notices</a></li>
+                            <li><a href="#" class="menu-item" data-content="password">Change Password</a></li>
+                            <li><a href="#" id="faculty-logout">Logout</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="main-content">
+                        <div class="action-buttons">
+                            <button class="action-btn" id="mark-attendance-btn">Mark Attendance</button>
+                            <button class="action-btn" id="create-assignment-btn">Create Assignment</button>
+                            <button class="action-btn" id="student-management-btn">Student Management</button>
+                            <button class="action-btn" id="reports-btn">Reports</button>
+                        </div>
+                        
+                        <div id="faculty-dynamic-content" class="content-section">
+                            <!-- Faculty dynamic content will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Admin Dashboard -->
+            <div id="admin-dashboard" class="dashboard">
+                <div class="dashboard-header">
+                    <h1>Welcome, Administrator!</h1>
+                    <p id="admin-date">Today is Tuesday, October 15, 2023. You have 12 pending approvals and 3 system notifications.</p>
+                </div>
+                
+                <div class="dashboard-content">
+                    <div class="sidebar">
+                        <ul class="sidebar-menu">
+                            <li><a href="#" class="menu-item" data-content="dashboard">Dashboard</a></li>
+                            <li><a href="#" class="menu-item" data-content="approvals">Approvals</a></li>
+                            <li><a href="#" class="menu-item" data-content="user-management">User Management</a></li>
+                            <li><a href="#" class="menu-item" data-content="system-management">System Management</a></li>
+                            <li><a href="#" class="menu-item" data-content="backup">Backup & Restore</a></li>
+                            <li><a href="#" class="menu-item" data-content="reports">Reports & Analytics</a></li>
+                            <li><a href="#" class="menu-item" data-content="notification">Notification</a></li>
+                            <li><a href="#" class="menu-item" data-content="password">Change Password</a></li>
+                            <li><a href="#" id="admin-logout">Logout</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="main-content">
+                        <div class="action-buttons">
+                            <button class="action-btn" id="pending-approvals-btn">Pending Approvals</button>
+                            <button class="action-btn" id="user-management-btn">User Management</button>
+                            <button class="action-btn" id="backup-restore-btn">Backup & Restore</button>
+                            <button class="action-btn" id="admin-reports-btn">Reports</button>
+                        </div>
+                        
+                        <div id="admin-dynamic-content" class="content-section">
+                            <!-- Admin dynamic content will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Login Modal -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="login-form">
+                <h2>Login to Vidya Portal</h2>
+                <form id="login-form">
+                    <div class="form-group">
+                        <label for="user-id">User ID</label>
+                        <input type="text" id="user-id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="user-type">Login As</label>
+                        <select id="user-type" required>
+                            <option value="">Select User Type</option>
+                            <option value="student">Student</option>
+                            <option value="faculty">Faculty</option>
+                            <option value="admin">Administrator</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="login-btn">Login</button>
+                </form>
+                
+                <div class="login-instructions">
+                    <h3>Login Credentials for Testing:</h3>
+                    <ul>
+                        <li><strong>Student:</strong> ID: student123, Password: student123</li>
+                        <li><strong>Faculty:</strong> ID: faculty123, Password: faculty123</li>
+                        <li><strong>Admin:</strong> ID: admin123, Password: admin123</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p>Vidya Portal Educational Institution</p>
+                    <p>123 Education Street, Knowledge City</p>
+                    <p>Phone: +91-9876543210</p>
+                    <p>Email: info@vidyaportal.edu</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#" style="color: white;">About Us</a></p>
+                    <p><a href="#" style="color: white;">Courses</a></p>
+                    <p><a href="#" style="color: white;">Admissions</a></p>
+                    <p><a href="#" style="color: white;">Contact</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <p>Facebook</p>
+                    <p>Twitter</p>
+                    <p>Instagram</p>
+                    <p>LinkedIn</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Vidya Portal. All Rights Reserved. | Excellence in education since 1990</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Predefined user credentials
+        const userCredentials = {
+            student: [
+                { id: "student123", password: "student123", name: "Rahul Sharma", roll: "CS2023001" },
+                { id: "student456", password: "student456", name: "Priya Patel", roll: "CS2023002" },
+                { id: "student789", password: "student789", name: "Amit Kumar", roll: "CS2023003" }
+            ],
+            faculty: [
+                { id: "faculty123", password: "faculty123", name: "Dr. Priya Singh" },
+                { id: "faculty456", password: "faculty456", name: "Prof. Rajesh Kumar" },
+                { id: "faculty789", password: "faculty789", name: "Dr. Anjali Sharma" }
+            ],
+            admin: [
+                { id: "admin123", password: "admin123", name: "Administrator" },
+                { id: "admin456", password: "admin456", name: "Super Admin" }
+            ]
+        };
+
+        // DOM Elements
+        const loginBtn = document.getElementById('login-btn');
+        const loginModal = document.getElementById('login-modal');
+        const closeModal = document.querySelector('.close');
+        const loginForm = document.getElementById('login-form');
+        const homePage = document.getElementById('home-page');
+        const studentDashboard = document.getElementById('student-dashboard');
+        const facultyDashboard = document.getElementById('faculty-dashboard');
+        const adminDashboard = document.getElementById('admin-dashboard');
+        const logoutBtns = document.querySelectorAll('#logout-btn, #faculty-logout, #admin-logout');
+        
+        // Show login modal
+        loginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'block';
+        });
+        
+        // Close login modal
+        closeModal.addEventListener('click', () => {
+            loginModal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === loginModal) {
+                loginModal.style.display = 'none';
+            }
+        });
+        
+        // Handle login form submission
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const userId = document.getElementById('user-id').value;
+            const password = document.getElementById('password').value;
+            const userType = document.getElementById('user-type').value;
+            
+            // Validate credentials
+            if (userId && password && userType) {
+                const isValid = validateCredentials(userId, password, userType);
+                
+                if (isValid) {
+                    // Hide login modal and home page
+                    loginModal.style.display = 'none';
+                    homePage.style.display = 'none';
+                    
+                    // Show appropriate dashboard based on user type
+                    if (userType === 'student') {
+                        const student = userCredentials.student.find(u => u.id === userId);
+                        document.getElementById('student-name').textContent = student.name;
+                        document.getElementById('student-roll').textContent = student.roll;
+                        studentDashboard.style.display = 'block';
+                        updateDynamicContent('academic');
+                    } else if (userType === 'faculty') {
+                        const faculty = userCredentials.faculty.find(u => u.id === userId);
+                        document.getElementById('faculty-name').textContent = faculty.name;
+                        facultyDashboard.style.display = 'block';
+                        updateFacultyDynamicContent('attendance');
+                    } else if (userType === 'admin') {
+                        adminDashboard.style.display = 'block';
+                        updateAdminDynamicContent('dashboard');
+                    }
+                } else {
+                    alert('Invalid credentials. Please try again.');
+                }
+            } else {
+                alert('Please fill in all fields');
+            }
+        });
+        
+        // Validate user credentials
+        function validateCredentials(userId, password, userType) {
+            if (userCredentials[userType]) {
+                return userCredentials[userType].some(user => 
+                    user.id === userId && user.password === password
+                );
+            }
+            return false;
+        }
+        
+        // Handle logout
+        logoutBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Hide all dashboards
+                studentDashboard.style.display = 'none';
+                facultyDashboard.style.display = 'none';
+                adminDashboard.style.display = 'none';
+                
+                // Show home page
+                homePage.style.display = 'block';
+                
+                // Reset login form
+                loginForm.reset();
+            });
+        });
+        
+        // Function to update dynamic content for student dashboard
+        function updateDynamicContent(contentType) {
+            const dynamicContent = document.getElementById('dynamic-content');
+            
+            let contentHTML = '';
+            
+            switch(contentType) {
+                case 'timetable':
+                    contentHTML = `
+                        <h2>Timetable</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Day/Time</th>
+                                    <th>9:00-10:00</th>
+                                    <th>10:00-11:00</th>
+                                    <th>11:15-12:15</th>
+                                    <th>12:15-1:15</th>
+                                    <th>2:00-3:00</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Monday</td>
+                                    <td>Mathematics</td>
+                                    <td>Physics</td>
+                                    <td>Computer Science</td>
+                                    <td>English</td>
+                                    <td>Lab: Programming</td>
+                                </tr>
+                                <tr>
+                                    <td>Tuesday</td>
+                                    <td>Chemistry</td>
+                                    <td>Mathematics</td>
+                                    <td>Physics Lab</td>
+                                    <td>Computer Lab</td>
+                                    <td>Soft Skills</td>
+                                </tr>
+                                <tr>
+                                    <td>Wednesday</td>
+                                    <td>Computer Science</td>
+                                    <td>English</td>
+                                    <td>Mathematics</td>
+                                    <td>Chemistry Lab</td>
+                                    <td>Project Work</td>
+                                </tr>
+                                <tr>
+                                    <td>Thursday</td>
+                                    <td>Physics</td>
+                                    <td>Chemistry</td>
+                                    <td>English</td>
+                                    <td>Mathematics</td>
+                                    <td>Library</td>
+                                </tr>
+                                <tr>
+                                    <td>Friday</td>
+                                    <td>Project Work</td>
+                                    <td>Project Work</td>
+                                    <td>Seminar</td>
+                                    <td>Sports</td>
+                                    <td>Cultural Activity</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    `;
+                    break;
+                    
+                case 'lecture':
+                    contentHTML = `
+                        <h2>Today's Lectures</h2>
+                        <p><strong>Date:</strong> ${new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+                        
+                        <div class="lecture-card">
+                            <h3>Mathematics <span class="status-badge status-upcoming">Upcoming</span></h3>
+                            <p><span class="lecture-time">9:00 AM - 10:00 AM</span></p>
+                            <p><strong>Topic:</strong> Differential Equations</p>
+                            <p><strong>Faculty:</strong> Dr. Mathur</p>
+                            <p><strong>Room:</strong> LT-101</p>
+                            <button class="btn">Join Online Class</button>
+                            <button class="btn btn-secondary">View Notes</button>
+                        </div>
+                        
+                        <div class="lecture-card">
+                            <h3>Physics <span class="status-badge status-completed">Completed</span></h3>
+                            <p><span class="lecture-time">10:00 AM - 11:00 AM</span></p>
+                            <p><strong>Topic:</strong> Quantum Mechanics</p>
+                            <p><strong>Faculty:</strong> Dr. Sharma</p>
+                            <p><strong>Room:</strong> LT-102</p>
+                            <button class="btn btn-secondary">View Recording</button>
+                            <button class="btn btn-secondary">Download Notes</button>
+                        </div>
+                        
+                        <div class="lecture-card">
+                            <h3>Computer Science <span class="status-badge status-upcoming">Upcoming</span></h3>
+                            <p><span class="lecture-time">11:15 AM - 12:15 PM</span></p>
+                            <p><strong>Topic:</strong> Data Structures - Trees</p>
+                            <p><strong>Faculty:</strong> Prof. Gupta</p>
+                            <p><strong>Room:</strong> CS Lab-2</p>
+                            <button class="btn">Join Online Class</button>
+                            <button class="btn btn-secondary">View Assignment</button>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'notes':
+                    contentHTML = `
+                        <h2>Subject Notes</h2>
+                        <div class="content-card">
+                            <h3>Mathematics</h3>
+                            <p><strong>Chapter 5:</strong> Differential Equations</p>
+                            <p><strong>Last Updated:</strong> October 10, 2023</p>
+                            <button class="btn">Download PDF</button>
+                            <button class="btn btn-secondary">View Online</button>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Physics</h3>
+                            <p><strong>Chapter 7:</strong> Quantum Mechanics</p>
+                            <p><strong>Last Updated:</strong> October 12, 2023</p>
+                            <button class="btn">Download PDF</button>
+                            <button class="btn btn-secondary">View Online</button>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Computer Science</h3>
+                            <p><strong>Chapter 4:</strong> Data Structures - Trees</p>
+                            <p><strong>Last Updated:</strong> October 15, 2023</p>
+                            <button class="btn">Download PDF</button>
+                            <button class="btn btn-secondary">View Online</button>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'attendance':
+                    contentHTML = `
+                        <h2>Attendance Overview</h2>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin-top: 20px;">
+                            <div style="background-color: #e8f4f8; padding: 15px; border-radius: 5px; text-align: center;">
+                                <h3>Mathematics</h3>
+                                <p style="font-size: 24px; font-weight: bold; color: #1a5276;">85%</p>
+                                <p>Present: 34/40</p>
+                            </div>
+                            <div style="background-color: #e8f4f8; padding: 15px; border-radius: 5px; text-align: center;">
+                                <h3>Physics</h3>
+                                <p style="font-size: 24px; font-weight: bold; color: #1a5276;">92%</p>
+                                <p>Present: 37/40</p>
+                            </div>
+                            <div style="background-color: #e8f4f8; padding: 15px; border-radius: 5px; text-align: center;">
+                                <h3>Computer Science</h3>
+                                <p style="font-size: 24px; font-weight: bold; color: #1a5276;">88%</p>
+                                <p>Present: 35/40</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'assignment':
+                    contentHTML = `
+                        <h2>My Assignments</h2>
+                        <div class="content-card">
+                            <h3>Mathematics Assignment <span class="status-badge status-completed">Submitted</span></h3>
+                            <p><strong>Topic:</strong> Differential Equations</p>
+                            <p><strong>Due Date:</strong> October 25, 2023</p>
+                            <p><strong>Submitted On:</strong> October 24, 2023</p>
+                            <p><strong>Marks:</strong> 18/20</p>
+                            <button class="btn">View Feedback</button>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Physics Lab Report <span class="status-badge status-pending">Pending</span></h3>
+                            <p><strong>Topic:</strong> Quantum Mechanics Experiment</p>
+                            <p><strong>Due Date:</strong> October 28, 2023</p>
+                            <p><strong>Status:</strong> Not Submitted</p>
+                            <button class="btn">Submit Now</button>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'books':
+                    contentHTML = `
+                        <h2>Books Issued</h2>
+                        <div class="content-card">
+                            <h3>Advanced Mathematics</h3>
+                            <p><strong>Author:</strong> Dr. R.K. Sharma</p>
+                            <p><strong>Issue Date:</strong> September 15, 2023</p>
+                            <p><strong>Due Date:</strong> November 15, 2023</p>
+                            <button class="btn">Renew Book</button>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Introduction to Quantum Physics</h3>
+                            <p><strong>Author:</strong> David J. Griffiths</p>
+                            <p><strong>Issue Date:</strong> October 1, 2023</p>
+                            <p><strong>Due Date:</strong> December 1, 2023</p>
+                            <button class="btn">Renew Book</button>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'request':
+                    contentHTML = `
+                        <h2>Make a Request</h2>
+                        <div class="form-container">
+                            <div class="form-group">
+                                <label for="request-type">Request Type</label>
+                                <select id="request-type">
+                                    <option value="">Select Request Type</option>
+                                    <option value="certificate">Certificate Request</option>
+                                    <option value="library">Library Book Request</option>
+                                    <option value="hostel">Hostel Related</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="request-subject">Subject</label>
+                                <input type="text" id="request-subject" placeholder="Enter request subject">
+                            </div>
+                            <div class="form-group">
+                                <label for="request-description">Description</label>
+                                <textarea id="request-description" placeholder="Describe your request"></textarea>
+                            </div>
+                            <button class="btn">Submit Request</button>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'download':
+                    contentHTML = `
+                        <h2>Download Certificates</h2>
+                        <div class="content-card">
+                            <h3>Bonafide Certificate</h3>
+                            <p><strong>Purpose:</strong> General Purpose</p>
+                            <p><strong>Generated On:</strong> October 10, 2023</p>
+                            <button class="btn">Download PDF</button>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Fee Receipt (Semester 5)</h3>
+                            <p><strong>Academic Year:</strong> 2023-2024</p>
+                            <p><strong>Generated On:</strong> July 25, 2023</p>
+                            <button class="btn">Download PDF</button>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'moocs':
+                    contentHTML = `
+                        <h2>MOOCs (Massive Open Online Courses)</h2>
+                        <div class="content-card">
+                            <h3>Introduction to Artificial Intelligence</h3>
+                            <p><strong>Platform:</strong> Coursera</p>
+                            <p><strong>Duration:</strong> 6 weeks</p>
+                            <p><strong>Status:</strong> <span class="status-badge status-completed">Completed</span></p>
+                            <button class="btn">View Certificate</button>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Data Science Fundamentals</h3>
+                            <p><strong>Platform:</strong> edX</p>
+                            <p><strong>Duration:</strong> 8 weeks</p>
+                            <p><strong>Status:</strong> <span class="status-badge status-upcoming">Enrolled</span></p>
+                            <button class="btn">Access Course</button>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'certificate':
+                    contentHTML = `
+                        <h2>My Certificates</h2>
+                        <div class="content-card">
+                            <h3>Python Programming Certificate</h3>
+                            <p><strong>Issued By:</strong> Vidya Portal</p>
+                            <p><strong>Issue Date:</strong> August 30, 2023</p>
+                            <button class="btn">Download Certificate</button>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Web Development Workshop</h3>
+                            <p><strong>Issued By:</strong> Computer Science Department</p>
+                            <p><strong>Issue Date:</strong> July 15, 2023</p>
+                            <button class="btn">Download Certificate</button>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'test':
+                    contentHTML = `
+                        <h2>My Tests & Exams</h2>
+                        <div class="content-card">
+                            <h3>Mathematics - Unit Test 3 <span class="status-badge status-completed">Completed</span></h3>
+                            <p><strong>Date:</strong> October 10, 2023</p>
+                            <p><strong>Marks Obtained:</strong> 42/50</p>
+                            <button class="btn">View Answer Sheet</button>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Physics - Mid Semester Exam <span class="status-badge status-completed">Completed</span></h3>
+                            <p><strong>Date:</strong> October 5, 2023</p>
+                            <p><strong>Marks Obtained:</strong> 78/100</p>
+                            <button class="btn">View Answer Sheet</button>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'notice':
+                    contentHTML = `
+                        <h2>Notice Board</h2>
+                        <div class="content-card">
+                            <h3>Scholarship Application Deadline Extended</h3>
+                            <p><strong>Date:</strong> October 18, 2023</p>
+                            <p>The deadline for submitting scholarship applications has been extended to October 30, 2023.</p>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>College Festival 'Vidya Utsav' Schedule</h3>
+                            <p><strong>Date:</strong> October 15, 2023</p>
+                            <p>The annual college festival 'Vidya Utsav' will be held from November 15-17, 2023.</p>
+                        </div>
+                    `;
+                    break;
+                    
+                default:
+                    contentHTML = `<h2>${contentType.charAt(0).toUpperCase() + contentType.slice(1).replace('-', ' ')}</h2><p>Content for ${contentType.replace('-', ' ')} will be displayed here.</p>`;
+            }
+            
+            dynamicContent.innerHTML = contentHTML;
+            
+            // Add event listeners to student menu items
+            const studentMenuItems = document.querySelectorAll('#student-dashboard .menu-item, #student-dashboard .submenu-item');
+            studentMenuItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const contentType = item.getAttribute('data-content');
+                    updateDynamicContent(contentType);
+                    
+                    // Toggle submenu if it exists
+                    const submenu = item.nextElementSibling;
+                    if (submenu && submenu.classList.contains('submenu')) {
+                        submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+                    }
+                });
+            });
+        }
+        
+        // Function to update dynamic content for faculty dashboard
+        function updateFacultyDynamicContent(contentType) {
+            const dynamicContent = document.getElementById('faculty-dynamic-content');
+            
+            let contentHTML = '';
+            
+            switch(contentType) {
+                case 'attendance':
+                    contentHTML = `
+                        <h2>Attendance Management</h2>
+                        <div class="admin-stats">
+                            <div class="stat-card">
+                                <h3>Total Students</h3>
+                                <div class="stat-value">65</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Attendance Today</h3>
+                                <div class="stat-value">58</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Average %</h3>
+                                <div class="stat-value">89%</div>
+                            </div>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button class="action-btn" onclick="updateFacultyDynamicContent('mark-attendance')">Mark Attendance</button>
+                            <button class="action-btn" onclick="updateFacultyDynamicContent('attendance-history')">View History</button>
+                            <button class="action-btn" onclick="updateFacultyDynamicContent('attendance-report')">Generate Report</button>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'mark-attendance':
+                    contentHTML = `
+                        <h2>Mark Attendance</h2>
+                        <div class="form-container">
+                            <div class="form-group">
+                                <label for="attendance-date">Date</label>
+                                <input type="date" id="attendance-date">
+                            </div>
+                            <div class="form-group">
+                                <label for="attendance-subject">Subject</label>
+                                <select id="attendance-subject">
+                                    <option value="">Select Subject</option>
+                                    <option value="math">Mathematics</option>
+                                    <option value="physics">Physics</option>
+                                    <option value="cs">Computer Science</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Student List</label>
+                                <div style="max-height: 300px; overflow-y: auto; border: 1px solid #ddd; padding: 10px;">
+                                    <div style="display: flex; justify-content: space-between; padding: 5px;">
+                                        <span>Rahul Sharma (CS2023001)</span>
+                                        <input type="checkbox" checked>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; padding: 5px;">
+                                        <span>Priya Patel (CS2023002)</span>
+                                        <input type="checkbox" checked>
+                                    </div>
+                                    <div style="display: flex; justify-content: space-between; padding: 5px;">
+                                        <span>Amit Kumar (CS2023003)</span>
+                                        <input type="checkbox">
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn">Submit Attendance</button>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'attendance-history':
+                    contentHTML = `
+                        <h2>Attendance History</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Subject</th>
+                                    <th>Present</th>
+                                    <th>Absent</th>
+                                    <th>Percentage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>15-10-2023</td>
+                                    <td>Mathematics</td>
+                                    <td>58</td>
+                                    <td>7</td>
+                                    <td>89%</td>
+                                </tr>
+                                <tr>
+                                    <td>14-10-2023</td>
+                                    <td>Physics</td>
+                                    <td>62</td>
+                                    <td>3</td>
+                                    <td>95%</td>
+                                </tr>
+                                <tr>
+                                    <td>13-10-2023</td>
+                                    <td>Computer Science</td>
+                                    <td>60</td>
+                                    <td>5</td>
+                                    <td>92%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    `;
+                    break;
+                    
+                case 'assignment':
+                    contentHTML = `
+                        <h2>Assignment Management</h2>
+                        <div class="action-buttons">
+                            <button class="action-btn">Create Assignment</button>
+                            <button class="action-btn">View Submissions</button>
+                            <button class="action-btn">Grade Assignments</button>
+                        </div>
+                        
+                        <div style="margin-top: 20px;">
+                            <h3>Recent Assignments</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Subject</th>
+                                        <th>Due Date</th>
+                                        <th>Submissions</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Differential Equations</td>
+                                        <td>Mathematics</td>
+                                        <td>25-10-2023</td>
+                                        <td>58/65</td>
+                                        <td><button class="btn" style="padding: 5px 10px;">Grade</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quantum Mechanics Lab</td>
+                                        <td>Physics</td>
+                                        <td>28-10-2023</td>
+                                        <td>42/65</td>
+                                        <td><button class="btn" style="padding: 5px 10px;">View</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'study-material':
+                    contentHTML = `
+                        <h2>Study Material Management</h2>
+                        <div class="form-container">
+                            <div class="form-group">
+                                <label for="material-title">Title</label>
+                                <input type="text" id="material-title" placeholder="Enter material title">
+                            </div>
+                            <div class="form-group">
+                                <label for="material-subject">Subject</label>
+                                <select id="material-subject">
+                                    <option value="">Select Subject</option>
+                                    <option value="math">Mathematics</option>
+                                    <option value="physics">Physics</option>
+                                    <option value="cs">Computer Science</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="material-file">Upload File</label>
+                                <input type="file" id="material-file">
+                            </div>
+                            <button class="btn">Upload Material</button>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <h3>Uploaded Materials</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Title</th>
+                                        <th>Subject</th>
+                                        <th>Upload Date</th>
+                                        <th>Downloads</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Differential Equations Notes</td>
+                                        <td>Mathematics</td>
+                                        <td>10-10-2023</td>
+                                        <td>58</td>
+                                        <td><button class="btn" style="padding: 5px 10px;">Edit</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Quantum Mechanics Problems</td>
+                                        <td>Physics</td>
+                                        <td>05-10-2023</td>
+                                        <td>42</td>
+                                        <td><button class="btn" style="padding: 5px 10px;">Edit</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'exam':
+                    contentHTML = `
+                        <h2>Exam Management</h2>
+                        <div class="action-buttons">
+                            <button class="action-btn">Create Exam</button>
+                            <button class="action-btn">Schedule Exam</button>
+                            <button class="action-btn">View Results</button>
+                        </div>
+                        
+                        <div style="margin-top: 20px;">
+                            <h3>Upcoming Exams</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Exam Name</th>
+                                        <th>Subject</th>
+                                        <th>Date</th>
+                                        <th>Duration</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Unit Test 4</td>
+                                        <td>Mathematics</td>
+                                        <td>05-11-2023</td>
+                                        <td>90 minutes</td>
+                                        <td><button class="btn" style="padding: 5px 10px;">Edit</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Practical Exam</td>
+                                        <td>Computer Science</td>
+                                        <td>30-10-2023</td>
+                                        <td>2 hours</td>
+                                        <td><button class="btn" style="padding: 5px 10px;">Edit</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'result':
+                    contentHTML = `
+                        <h2>Result Management</h2>
+                        <div class="action-buttons">
+                            <button class="action-btn">Upload Results</button>
+                            <button class="action-btn">Generate Report</button>
+                            <button class="action-btn">Publish Results</button>
+                        </div>
+                        
+                        <div style="margin-top: 20px;">
+                            <h3>Recent Results</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Exam</th>
+                                        <th>Subject</th>
+                                        <th>Date</th>
+                                        <th>Average Marks</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Unit Test 3</td>
+                                        <td>Mathematics</td>
+                                        <td>10-10-2023</td>
+                                        <td>42/50</td>
+                                        <td><button class="btn" style="padding: 5px 10px;">View</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mid Semester</td>
+                                        <td>Physics</td>
+                                        <td>05-10-2023</td>
+                                        <td>78/100</td>
+                                        <td><button class="btn" style="padding: 5px 10px;">View</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'timetable':
+                    contentHTML = `
+                        <h2>Faculty Timetable</h2>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Day/Time</th>
+                                    <th>9:00-10:00</th>
+                                    <th>10:00-11:00</th>
+                                    <th>11:15-12:15</th>
+                                    <th>12:15-1:15</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Monday</td>
+                                    <td>Mathematics - LT-101</td>
+                                    <td>Physics - LT-102</td>
+                                    <td>Computer Science - CS Lab</td>
+                                    <td>Free</td>
+                                </tr>
+                                <tr>
+                                    <td>Tuesday</td>
+                                    <td>Chemistry - LT-103</td>
+                                    <td>Mathematics - LT-101</td>
+                                    <td>Physics Lab</td>
+                                    <td>Computer Lab</td>
+                                </tr>
+                                <tr>
+                                    <td>Wednesday</td>
+                                    <td>Computer Science - CS Lab</td>
+                                    <td>Free</td>
+                                    <td>Mathematics - LT-101</td>
+                                    <td>Chemistry Lab</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    `;
+                    break;
+                    
+                case 'notices':
+                    contentHTML = `
+                        <h2>Faculty Notices</h2>
+                        <div class="form-container">
+                            <div class="form-group">
+                                <label for="notice-title">Title</label>
+                                <input type="text" id="notice-title" placeholder="Enter notice title">
+                            </div>
+                            <div class="form-group">
+                                <label for="notice-content">Content</label>
+                                <textarea id="notice-content" placeholder="Enter notice content" rows="4"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="notice-audience">Audience</label>
+                                <select id="notice-audience">
+                                    <option value="all">All Students</option>
+                                    <option value="department">Department Specific</option>
+                                    <option value="course">Course Specific</option>
+                                </select>
+                            </div>
+                            <button class="btn">Publish Notice</button>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <h3>Recent Notices</h3>
+                            <div class="content-card">
+                                <h3>Scholarship Application Deadline</h3>
+                                <p><strong>Published:</strong> October 18, 2023</p>
+                                <p>The deadline for submitting scholarship applications has been extended to October 30, 2023.</p>
+                            </div>
+                            <div class="content-card">
+                                <h3>Lab Schedule Change</h3>
+                                <p><strong>Published:</strong> October 15, 2023</p>
+                                <p>Physics lab schedule for next week has been changed. Please check the updated timetable.</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                default:
+                    contentHTML = `<h2>Faculty ${contentType.charAt(0).toUpperCase() + contentType.slice(1).replace('-', ' ')}</h2><p>Faculty content for ${contentType.replace('-', ' ')} will be displayed here.</p>`;
+            }
+            
+            dynamicContent.innerHTML = contentHTML;
+            
+            // Add event listeners to faculty menu items
+            const facultyMenuItems = document.querySelectorAll('#faculty-dashboard .menu-item, #faculty-dashboard .submenu-item');
+            facultyMenuItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const contentType = item.getAttribute('data-content');
+                    updateFacultyDynamicContent(contentType);
+                    
+                    // Toggle submenu if it exists
+                    const submenu = item.nextElementSibling;
+                    if (submenu && submenu.classList.contains('submenu')) {
+                        submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+                    }
+                });
+            });
+        }
+        
+        // Function to update dynamic content for admin dashboard
+        function updateAdminDynamicContent(contentType) {
+            const dynamicContent = document.getElementById('admin-dynamic-content');
+            
+            let contentHTML = '';
+            
+            switch(contentType) {
+                case 'dashboard':
+                    contentHTML = `
+                        <h2>Admin Dashboard</h2>
+                        <div class="admin-stats">
+                            <div class="stat-card">
+                                <h3>Total Students</h3>
+                                <div class="stat-value">1,245</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Total Faculty</h3>
+                                <div class="stat-value">78</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>Pending Approvals</h3>
+                                <div class="stat-value">12</div>
+                            </div>
+                            <div class="stat-card">
+                                <h3>System Notifications</h3>
+                                <div class="stat-value">3</div>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <h3>Recent Activities</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date</th>
+                                        <th>Activity</th>
+                                        <th>User</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>15-10-2023</td>
+                                        <td>New Student Registration</td>
+                                        <td>Rohit Verma</td>
+                                        <td><span class="status-badge status-approved">Approved</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>14-10-2023</td>
+                                        <td>Fee Payment</td>
+                                        <td>Priya Patel</td>
+                                        <td><span class="status-badge status-approved">Completed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>14-10-2023</td>
+                                        <td>Course Change Request</td>
+                                        <td>Amit Kumar</td>
+                                        <td><span class="status-badge status-pending">Pending</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'approvals':
+                    contentHTML = `
+                        <h2>Pending Approvals</h2>
+                        <div class="content-card">
+                            <h3>Course Change Request <span class="status-badge status-pending">Pending</span></h3>
+                            <p><strong>Student:</strong> Amit Kumar (CS2023003)</p>
+                            <p><strong>Requested On:</strong> October 14, 2023</p>
+                            <p><strong>Current Course:</strong> B.Tech Computer Science</p>
+                            <p><strong>Requested Course:</strong> B.Tech Information Technology</p>
+                            <button class="btn">Approve</button>
+                            <button class="btn btn-secondary">Reject</button>
+                            <button class="btn btn-secondary">View Details</button>
+                        </div>
+                        
+                        <div class="content-card">
+                            <h3>Scholarship Application <span class="status-badge status-pending">Pending</span></h3>
+                            <p><strong>Student:</strong> Priya Patel (CS2023002)</p>
+                            <p><strong>Applied On:</strong> October 12, 2023</p>
+                            <p><strong>Scholarship Type:</strong> Merit-based</p>
+                            <p><strong>Academic Performance:</strong> CGPA 9.2/10</p>
+                            <button class="btn">Approve</button>
+                            <button class="btn btn-secondary">Reject</button>
+                            <button class="btn btn-secondary">View Details</button>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'user-management':
+                    contentHTML = `
+                        <h2>User Management</h2>
+                        <div class="action-buttons">
+                            <button class="action-btn">Add New Student</button>
+                            <button class="action-btn">Add New Faculty</button>
+                            <button class="action-btn">Add New Admin</button>
+                            <button class="action-btn">Bulk Upload</button>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <h3>User List</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>User ID</th>
+                                        <th>Name</th>
+                                        <th>Role</th>
+                                        <th>Department</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>CS2023001</td>
+                                        <td>Rahul Sharma</td>
+                                        <td>Student</td>
+                                        <td>Computer Science</td>
+                                        <td><span class="status-badge status-approved">Active</span></td>
+                                        <td><button class="btn" style="padding: 5px 10px;">Edit</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>FAC2023001</td>
+                                        <td>Dr. Priya Singh</td>
+                                        <td>Faculty</td>
+                                        <td>Physics</td>
+                                        <td><span class="status-badge status-approved">Active</span></td>
+                                        <td><button class="btn" style="padding: 5px 10px;">Edit</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'system-management':
+                    contentHTML = `
+                        <h2>System Management</h2>
+                        <div class="action-buttons">
+                            <button class="action-btn">Database Settings</button>
+                            <button class="action-btn">Security Settings</button>
+                            <button class="action-btn">Email Configuration</button>
+                            <button class="action-btn">System Logs</button>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <h3>System Status</h3>
+                            <div class="admin-stats">
+                                <div class="stat-card">
+                                    <h3>Server Uptime</h3>
+                                    <div class="stat-value">99.8%</div>
+                                </div>
+                                <div class="stat-card">
+                                    <h3>Active Users</h3>
+                                    <div class="stat-value">243</div>
+                                </div>
+                                <div class="stat-card">
+                                    <h3>Storage Used</h3>
+                                    <div class="stat-value">68%</div>
+                                </div>
+                            </div>
+                            
+                            <h3 style="margin-top: 30px;">System Configuration</h3>
+                            <div class="form-container">
+                                <div class="form-group">
+                                    <label for="system-name">System Name</label>
+                                    <input type="text" id="system-name" value="Vidya Portal ERP" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="system-version">Version</label>
+                                    <input type="text" id="system-version" value="2.1.4" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="maintenance-mode">Maintenance Mode</label>
+                                    <select id="maintenance-mode">
+                                        <option value="off">Off</option>
+                                        <option value="on">On</option>
+                                    </select>
+                                </div>
+                                <button class="btn">Save Settings</button>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'backup':
+                    contentHTML = `
+                        <h2>Backup & Restore</h2>
+                        <div class="action-buttons">
+                            <button class="action-btn">Create Backup</button>
+                            <button class="action-btn">Restore Backup</button>
+                            <button class="action-btn">Schedule Backup</button>
+                            <button class="action-btn">Download Backup</button>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <h3>Backup History</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Backup Name</th>
+                                        <th>Date</th>
+                                        <th>Size</th>
+                                        <th>Status</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>backup_20231015</td>
+                                        <td>15-10-2023</td>
+                                        <td>2.4 GB</td>
+                                        <td><span class="status-badge status-approved">Completed</span></td>
+                                        <td><button class="btn" style="padding: 5px 10px;">Restore</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backup_20231008</td>
+                                        <td>08-10-2023</td>
+                                        <td>2.3 GB</td>
+                                        <td><span class="status-badge status-approved">Completed</span></td>
+                                        <td><button class="btn" style="padding: 5px 10px;">Restore</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>backup_20231001</td>
+                                        <td>01-10-2023</td>
+                                        <td>2.2 GB</td>
+                                        <td><span class="status-badge status-approved">Completed</span></td>
+                                        <td><button class="btn" style="padding: 5px 10px;">Restore</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <h3>Backup Settings</h3>
+                            <div class="form-container">
+                                <div class="form-group">
+                                    <label for="backup-frequency">Backup Frequency</label>
+                                    <select id="backup-frequency">
+                                        <option value="daily">Daily</option>
+                                        <option value="weekly" selected>Weekly</option>
+                                        <option value="monthly">Monthly</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="backup-time">Backup Time</label>
+                                    <input type="time" id="backup-time" value="02:00">
+                                </div>
+                                <div class="form-group">
+                                    <label for="backup-retention">Retention Period (days)</label>
+                                    <input type="number" id="backup-retention" value="30">
+                                </div>
+                                <button class="btn">Save Settings</button>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'reports':
+                    contentHTML = `
+                        <h2>Reports & Analytics</h2>
+                        <div class="action-buttons">
+                            <button class="action-btn">Student Report</button>
+                            <button class="action-btn">Faculty Report</button>
+                            <button class="action-btn">Financial Report</button>
+                            <button class="action-btn">Attendance Report</button>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <h3>Report Generator</h3>
+                            <div class="form-container">
+                                <div class="form-group">
+                                    <label for="report-type">Report Type</label>
+                                    <select id="report-type">
+                                        <option value="">Select Report Type</option>
+                                        <option value="student">Student Performance</option>
+                                        <option value="attendance">Attendance Summary</option>
+                                        <option value="financial">Financial Summary</option>
+                                        <option value="faculty">Faculty Performance</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="report-period">Period</label>
+                                    <select id="report-period">
+                                        <option value="weekly">Weekly</option>
+                                        <option value="monthly">Monthly</option>
+                                        <option value="quarterly">Quarterly</option>
+                                        <option value="yearly">Yearly</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="report-format">Format</label>
+                                    <select id="report-format">
+                                        <option value="pdf">PDF</option>
+                                        <option value="excel">Excel</option>
+                                        <option value="csv">CSV</option>
+                                    </select>
+                                </div>
+                                <button class="btn">Generate Report</button>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <h3>Recent Reports</h3>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Report Name</th>
+                                        <th>Generated On</th>
+                                        <th>Type</th>
+                                        <th>Period</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Student_Performance_Oct2023</td>
+                                        <td>15-10-2023</td>
+                                        <td>Student Performance</td>
+                                        <td>Monthly</td>
+                                        <td><button class="btn" style="padding: 5px 10px;">Download</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Attendance_Summary_Sep2023</td>
+                                        <td>01-10-2023</td>
+                                        <td>Attendance Summary</td>
+                                        <td>Monthly</td>
+                                        <td><button class="btn" style="padding: 5px 10px;">Download</button></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Financial_Report_Q3_2023</td>
+                                        <td>05-10-2023</td>
+                                        <td>Financial Summary</td>
+                                        <td>Quarterly</td>
+                                        <td><button class="btn" style="padding: 5px 10px;">Download</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    `;
+                    break;
+                    
+                case 'notification':
+                    contentHTML = `
+                        <h2>Notification Management</h2>
+                        <div class="action-buttons">
+                            <button class="action-btn">Send Notification</button>
+                            <button class="action-btn">Notification Templates</button>
+                            <button class="action-btn">Notification Logs</button>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <h3>Send Notification</h3>
+                            <div class="form-container">
+                                <div class="form-group">
+                                    <label for="notification-title">Title</label>
+                                    <input type="text" id="notification-title" placeholder="Enter notification title">
+                                </div>
+                                <div class="form-group">
+                                    <label for="notification-message">Message</label>
+                                    <textarea id="notification-message" placeholder="Enter notification message" rows="4"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="notification-audience">Audience</label>
+                                    <select id="notification-audience">
+                                        <option value="all">All Users</option>
+                                        <option value="students">Students Only</option>
+                                        <option value="faculty">Faculty Only</option>
+                                        <option value="admin">Admins Only</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="notification-priority">Priority</label>
+                                    <select id="notification-priority">
+                                        <option value="low">Low</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="high">High</option>
+                                    </select>
+                                </div>
+                                <button class="btn">Send Notification</button>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-top: 30px;">
+                            <h3>Recent Notifications</h3>
+                            <div class="notification-item">
+                                <h4>System Maintenance <span class="status-badge status-approved">Sent</span></h4>
+                                <p><strong>Sent:</strong> October 14, 2023</p>
+                                <p><strong>Audience:</strong> All Users</p>
+                                <p>The system will undergo maintenance on October 20, 2023 from 2:00 AM to 4:00 AM.</p>
+                            </div>
+                            <div class="notification-item">
+                                <h4>Fee Payment Reminder <span class="status-badge status-approved">Sent</span></h4>
+                                <p><strong>Sent:</strong> October 10, 2023</p>
+                                <p><strong>Audience:</strong> Students Only</p>
+                                <p>Last date for fee payment is October 25, 2023. Please complete the payment before the deadline.</p>
+                            </div>
+                        </div>
+                    `;
+                    break;
+                    
+                default:
+                    contentHTML = `<h2>Admin ${contentType.charAt(0).toUpperCase() + contentType.slice(1).replace('-', ' ')}</h2><p>Admin content for ${contentType.replace('-', ' ')} will be displayed here.</p>`;
+            }
+            
+            dynamicContent.innerHTML = contentHTML;
+            
+            // Add event listeners to admin menu items
+            const adminMenuItems = document.querySelectorAll('#admin-dashboard .menu-item');
+            adminMenuItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const contentType = item.getAttribute('data-content');
+                    updateAdminDynamicContent(contentType);
+                });
+            });
+        }
+        
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Set current date for faculty and admin dashboards
+            const currentDate = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            const formattedDate = currentDate.toLocaleDateString('en-US', options);
+            
+            document.getElementById('faculty-date').textContent = `Today is ${formattedDate}. You have 3 classes scheduled today.`;
+            document.getElementById('admin-date').textContent = `Today is ${formattedDate}. You have 12 pending approvals and 3 system notifications.`;
+            
+            // Add event listeners to action buttons
+            document.getElementById('mark-attendance-btn')?.addEventListener('click', () => {
+                updateFacultyDynamicContent('mark-attendance');
+            });
+            
+            document.getElementById('create-assignment-btn')?.addEventListener('click', () => {
+                updateFacultyDynamicContent('assignment');
+            });
+            
+            document.getElementById('pending-approvals-btn')?.addEventListener('click', () => {
+                updateAdminDynamicContent('approvals');
+            });
+            
+            document.getElementById('user-management-btn')?.addEventListener('click', () => {
+                updateAdminDynamicContent('user-management');
+            });
+            
+            document.getElementById('backup-restore-btn')?.addEventListener('click', () => {
+                updateAdminDynamicContent('backup');
+            });
+            
+            document.getElementById('admin-reports-btn')?.addEventListener('click', () => {
+                updateAdminDynamicContent('reports');
+            });
+        });
+    </script>
+</body>
+</html>
