@@ -1,0 +1,1613 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My College Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            background: #3c8dbc;
+            color: white;
+            padding: 20px 0;
+            position: relative;
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .header-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            position: absolute;
+            top: 10px;
+            left: 20px;
+        }
+        
+        .logo img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .college-name {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+        
+        .nav {
+            background: #1a4f8c;
+            padding: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        .nav ul li {
+            margin: 0 15px;
+        }
+        
+        .nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        .nav ul li a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .main-content {
+            padding: 30px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: 60vh;
+        }
+        
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .welcome-section h2 {
+            color: #1a4f8c;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+        
+        .welcome-section p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .news-section {
+            background: #f5f5f5;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        
+        .news-section h3 {
+            color: #1a4f8c;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3c8dbc;
+        }
+        
+        .news-section ul {
+            list-style-type: none;
+        }
+        
+        .news-section ul li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #ddd;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .news-section ul li:before {
+            content: "•";
+            color: #3c8dbc;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: 5px;
+        }
+        
+        .footer {
+            background: #1a4f8c;
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+            margin-top: 30px;
+        }
+        
+        .footer p {
+            margin: 5px 0;
+        }
+        
+        /* Login Page Styles */
+        .login-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .login-box {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .login-header h2 {
+            color: #1a4f8c;
+            margin-bottom: 10px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #555;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+        
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .login-btn {
+            background-color: #3c8dbc;
+            color: white;
+            border: none;
+            padding: 12px;
+            width: 100%;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .login-btn:hover {
+            background-color: #1a4f8c;
+        }
+        
+        .forgot-password {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .forgot-password a {
+            color: #3c8dbc;
+            text-decoration: none;
+        }
+        
+        /* Dashboard Common Styles */
+        .student-dashboard, .faculty-dashboard, .admin-dashboard {
+            display: none;
+            width: 100%;
+            min-height: 100vh;
+            background-color: #f9f9f9;
+        }
+        
+        .dashboard-header {
+            background: linear-gradient(135deg, #1a4f8c, #3c8dbc);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .dashboard-header .logo {
+            position: relative;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .dashboard-header .logo i {
+            font-size: 2rem;
+            margin-right: 10px;
+        }
+        
+        .dashboard-header .logo h1 {
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .dashboard-container {
+            display: flex;
+            min-height: calc(100vh - 70px);
+        }
+        
+        .dashboard-sidebar {
+            width: 250px;
+            background: #333;
+            color: white;
+            height: calc(100vh - 70px);
+            overflow-y: auto;
+            position: sticky;
+            top: 70px;
+            flex-shrink: 0;
+        }
+        
+        .dashboard-main {
+            flex: 1;
+            padding: 25px;
+            overflow-y: auto;
+            height: calc(100vh - 70px);
+        }
+        
+        .user-info {
+            text-align: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            margin: 15px;
+        }
+        
+        .sidebar-menu {
+            list-style: none;
+            padding: 20px 0;
+        }
+        
+        .sidebar-menu li {
+            margin-bottom: 5px;
+        }
+        
+        .sidebar-menu a {
+            display: block;
+            color: #ddd;
+            padding: 12px 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 15px;
+        }
+        
+        .sidebar-menu a:hover {
+            background-color: #444;
+            color: white;
+        }
+        
+        .sidebar-menu a.active {
+            background-color: #3c8dbc;
+            color: white;
+        }
+        
+        .sidebar-menu i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .welcome-banner {
+            background: linear-gradient(to right, #3c8dbc, #1a4f8c);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card h3 {
+            color: #1a4f8c;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .info-group {
+            margin-bottom: 15px;
+        }
+        
+        .info-group label {
+            font-weight: 600;
+            color: #333;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .info-group span {
+            color: #555;
+        }
+        
+        .back-to-home {
+            background: white;
+            color: #1a4f8c;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        /* Table Styles for Faculty and Admin */
+        .table-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            margin-bottom: 25px;
+            overflow-x: auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        th {
+            background-color: #f5f5f5;
+            font-weight: 600;
+            color: #333;
+        }
+        
+        tr:hover {
+            background-color: #f9f9f9;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 8px 15px;
+            background: #3c8dbc;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: #1a4f8c;
+        }
+        
+        .btn-success {
+            background: #28a745;
+        }
+        
+        .btn-success:hover {
+            background: #218838;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+        }
+        
+        .btn-danger:hover {
+            background: #c82333;
+        }
+        
+        .btn-warning {
+            background: #ffc107;
+            color: #212529;
+        }
+        
+        .btn-warning:hover {
+            background: #e0a800;
+        }
+        
+        .attendance-check, .row-check {
+            transform: scale(1.3);
+            margin-right: 10px;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab {
+            padding: 12px 20px;
+            cursor: pointer;
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            border-bottom: none;
+            margin-right: 5px;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+        }
+        
+        .tab.active {
+            background: white;
+            border-bottom: 1px solid white;
+            margin-bottom: -1px;
+            font-weight: 600;
+            color: #1a4f8c;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Status Badges */
+        .status-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .status-approved {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .status-rejected {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        /* Admin Specific Styles */
+        .backup-card {
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .backup-icon {
+            font-size: 48px;
+            color: #1a4f8c;
+            margin-bottom: 20px;
+        }
+        
+        .backup-options {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header {
+                min-height: 150px;
+                padding: 15px 0;
+            }
+            
+            .logo {
+                position: static;
+                text-align: center;
+                margin-bottom: 15px;
+            }
+            
+            .logo img {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .college-name {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav ul li {
+                margin: 5px 0;
+            }
+            
+            .main-content {
+                padding: 20px 15px;
+            }
+            
+            .login-box {
+                padding: 20px;
+                margin: 20px;
+            }
+            
+            .dashboard-container {
+                flex-direction: column;
+            }
+            
+            .dashboard-sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+                top: 0;
+            }
+            
+            .dashboard-main {
+                height: auto;
+            }
+            
+            .dashboard-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .dashboard-header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                margin-bottom: 5px;
+                border-radius: 4px;
+                border: 1px solid #ddd;
+            }
+            
+            .tab.active {
+                border-bottom: 1px solid #ddd;
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main College Website -->
+    <div id="college-website">
+        <!-- Header Section -->
+        <header class="header">
+            <div class="logo">
+                <img src="logo.png" style="width: 200px; height: 200px; border-radius: 50%;">
+            </div>
+            <div class="header-content">
+                <h1 class="college-name">🎓 Vidya Portal</h1>
+                <p class="tagline">Excellence in Education Since 1990</p>
+            </div>
+        </header>
+
+        <!-- Navigation -->
+        <nav class="nav">
+            <ul>
+                <li><a href="#" class="nav-link" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                <li><a href="#" class="nav-link" data-page="courses">Courses</a></li>
+                <li><a href="#" class="nav-link" data-page="admissions">Admissions</a></li>
+                <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                <li><a href="#" class="nav-link" data-page="payment">Payment</a></li>
+                <li><a href="#" class="login-link">Login</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="welcome-section">
+                <h2>Welcome to Vidya Portal</h2>
+                <p>Vidya Portal is a premier educational institution dedicated to providing quality education and fostering holistic development of students. With over three decades of excellence, we continue to shape future leaders.</p>
+            </div>
+            
+            <div class="news-section">
+                <h3>Latest News & Announcements</h3>
+                <ul>
+                    <li>Admissions open for 2024-25 academic session</li>
+                    <li>New courses launched in Computer Science and Business Administration</li>
+                    <li>Annual college festival 'Vidya Utsav' scheduled for next month</li>
+                    <li>Scholarship applications now being accepted for meritorious students</li>
+                    <li>Workshop on career guidance and placement preparation</li>
+                </ul>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2024 My College. Sabhi rights reserved.</p>
+            <p>Contact: college@email.com | Phone: 0123-456789</p>
+        </footer>
+
+        <!-- Login Page -->
+        <div class="login-container" id="loginContainer">
+            <div class="login-box">
+                <span class="close-btn" id="closeLogin">&times;</span>
+                <div class="login-header">
+                    <h2>Login to Vidya Portal</h2>
+                    <p>Enter your credentials to access your account</p>
+                </div>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="user-type">Login As</label>
+                        <select id="user-type" name="user-type" required>
+                            <option value="">Select User Type</option>
+                            <option value="student">Student</option>
+                            <option value="faculty">Faculty</option>
+                            <option value="admin">Administrator</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="username">User ID / Email</label>
+                        <input type="text" id="username" name="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="login-btn">Login</button>
+                </form>
+                <div class="forgot-password">
+                    <a href="#">Forgot Password?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Dashboard (Hidden by default) -->
+    <div class="student-dashboard" id="studentDashboard">
+        <header class="dashboard-header">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <h1>VidyaPortal - Student Dashboard</h1>
+            </div>
+            <button class="back-to-home" id="backToHomeStudent">Home</button>
+        </header>
+        
+        <div class="dashboard-container">
+            <aside class="dashboard-sidebar">
+                <div class="user-info">
+                    <h3>Rahul Sharma</h3>
+                    <p>ID: STU20235001</p>
+                </div>
+                
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-user-graduate"></i> Academic Profile</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-alt"></i> Timetable</a></li>
+                    <li><a href="#"><i class="fas fa-book"></i> Courses</a></li>
+                    <li><a href="#"><i class="fas fa-clipboard-check"></i> Attendance</a></li>
+                    <li><a href="#"><i class="fas fa-chart-bar"></i> Results</a></li>
+                    <li><a href="#"><i class="fas fa-file-invoice-dollar"></i> Fees</a></li>
+                    <li><a href="#"><i class="fas fa-book-open"></i> Library</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#" id="studentLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </aside>
+            
+            <main class="dashboard-main">
+                <div class="welcome-banner">
+                    <h2>Welcome, Rahul Sharma!</h2>
+                    <p>Here you can access all your academic information, services, and resources in one place.</p>
+                </div>
+
+                <div class="dashboard-cards">
+                    <div class="card">
+                        <h3>Academic Details</h3>
+                        <div class="info-group">
+                            <label>Course</label>
+                            <span>Bachelor of Computer Applications (BCA)</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Semester</label>
+                            <span>4th Semester</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Batch</label>
+                            <span>2023-2026</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Class Advisor</label>
+                            <span>Dr. Priya Mehta</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Personal Details</h3>
+                        <div class="info-group">
+                            <label>Date of Birth</label>
+                            <span>15 March 2004</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Email</label>
+                            <span>rahul.sharma@example.com</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Phone</label>
+                            <span>+91 9876543210</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Address</label>
+                            <span>123 Main Street, Mumbai</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Attendance Summary</h3>
+                        <div class="info-group">
+                            <label>Overall Attendance</label>
+                            <span>85%</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Present Days</label>
+                            <span>102</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Absent Days</label>
+                            <span>18</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Last Updated</label>
+                            <span>15 April 2024</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Upcoming Events</h3>
+                        <div class="info-group">
+                            <label>Mid-Term Exams</label>
+                            <span>25 April 2024</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Project Submission</label>
+                            <span>5 May 2024</span>
+                        </div>
+                        <div class="info-group">
+                            <label>College Fest</label>
+                            <span>15-17 May 2024</span>
+                        </div>
+                        <div class="info-group">
+                            <label>Semester End</label>
+                            <span>30 May 2024</span>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Faculty Dashboard (Hidden by default) -->
+    <div class="faculty-dashboard" id="facultyDashboard">
+        <header class="dashboard-header">
+            <div class="logo">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <h1>VidyaPortal - Faculty Dashboard</h1>
+            </div>
+            <button class="back-to-home" id="backToHomeFaculty">Home</button>
+        </header>
+        
+        <div class="dashboard-container">
+            <aside class="dashboard-sidebar">
+                <div class="user-info">
+                    <h3>Prof. Rajesh Sharma</h3>
+                    <p>ID: FAC2023501</p>
+                    <p>Department: Computer Science</p>
+                </div>
+                
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-calendar-alt"></i> Attendance</a></li>
+                    <li><a href="#"><i class="fas fa-tasks"></i> Assignments</a></li>
+                    <li><a href="#"><i class="fas fa-book"></i> Study Material</a></li>
+                    <li><a href="#"><i class="fas fa-clipboard-list"></i> Exams</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Results</a></li>
+                    <li><a href="#"><i class="fas fa-users"></i> Students</a></li>
+                    <li><a href="#"><i class="fas fa-clock"></i> Timetable</a></li>
+                    <li><a href="#"><i class="fas fa-bell"></i> Notices</a></li>
+                    <li><a href="#" id="facultyLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </aside>
+            
+            <main class="dashboard-main">
+                <div class="welcome-banner">
+                    <h2>Welcome, Professor Sharma!</h2>
+                    <p>Today is Tuesday, October 15, 2023. You have 3 classes scheduled today.</p>
+                </div>
+
+                <!-- Tabs for different functionalities -->
+                <div class="tabs">
+                    <div class="tab active" data-tab="attendance">Mark Attendance</div>
+                    <div class="tab" data-tab="assignment">Create Assignment</div>
+                    <div class="tab" data-tab="students">Student Management</div>
+                    <div class="tab" data-tab="reports">Reports</div>
+                </div>
+
+                <!-- Attendance Tab -->
+                <div class="tab-content active" id="attendance">
+                    <div class="card">
+                        <h3>Mark Attendance for BCA-4A</h3>
+                        <div class="form-group">
+                            <label for="attendance-date">Date</label>
+                            <input type="date" id="attendance-date" value="2023-10-15">
+                        </div>
+                        <div class="form-group">
+                            <label for="attendance-subject">Subject</label>
+                            <select id="attendance-subject">
+                                <option value="dbms">Database Management Systems</option>
+                                <option value="java">Java Programming</option>
+                                <option value="web">Web Technologies</option>
+                                <option value="maths">Mathematics</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="table-container">
+                        <h3>Student List</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Roll No</th>
+                                    <th>Student Name</th>
+                                    <th>Present</th>
+                                    <th>Absent</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>BCA2023001</td>
+                                    <td>Aarav Sharma</td>
+                                    <td><input type="radio" name="attendance1" class="attendance-check" checked></td>
+                                    <td><input type="radio" name="attendance1" class="attendance-check"></td>
+                                </tr>
+                                <tr>
+                                    <td>BCA2023002</td>
+                                    <td>Priya Patel</td>
+                                    <td><input type="radio" name="attendance2" class="attendance-check" checked></td>
+                                    <td><input type="radio" name="attendance2" class="attendance-check"></td>
+                                </tr>
+                                <tr>
+                                    <td>BCA2023003</td>
+                                    <td>Rahul Singh</td>
+                                    <td><input type="radio" name="attendance3" class="attendance-check"></td>
+                                    <td><input type="radio" name="attendance3" class="attendance-check" checked></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <button class="btn btn-success">Submit Attendance</button>
+                    </div>
+                </div>
+
+                <!-- Assignment Tab -->
+                <div class="tab-content" id="assignment">
+                    <div class="card">
+                        <h3>Create New Assignment</h3>
+                        <div class="form-group">
+                            <label for="assignment-title">Assignment Title</label>
+                            <input type="text" id="assignment-title" placeholder="Enter assignment title">
+                        </div>
+                        <div class="form-group">
+                            <label for="assignment-subject">Subject</label>
+                            <select id="assignment-subject">
+                                <option value="dbms">Database Management Systems</option>
+                                <option value="java">Java Programming</option>
+                                <option value="web">Web Technologies</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="assignment-class">Class</label>
+                            <select id="assignment-class">
+                                <option value="bca4a">BCA-4A</option>
+                                <option value="bca4b">BCA-4B</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="assignment-due">Due Date</label>
+                            <input type="date" id="assignment-due">
+                        </div>
+                        <button class="btn btn-success">Create Assignment</button>
+                    </div>
+                </div>
+
+                <!-- Students Tab -->
+                <div class="tab-content" id="students">
+                    <div class="table-container">
+                        <h3>Student List - BCA-4A</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Roll No</th>
+                                    <th>Student Name</th>
+                                    <th>Email</th>
+                                    <th>Attendance %</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>BCA2023001</td>
+                                    <td>Aarav Sharma</td>
+                                    <td>aarav@example.com</td>
+                                    <td>92%</td>
+                                    <td><button class="btn">View Profile</button></td>
+                                </tr>
+                                <tr>
+                                    <td>BCA2023002</td>
+                                    <td>Priya Patel</td>
+                                    <td>priya@example.com</td>
+                                    <td>88%</td>
+                                    <td><button class="btn">View Profile</button></td>
+                                </tr>
+                                <tr>
+                                    <td>BCA2023003</td>
+                                    <td>Rahul Singh</td>
+                                    <td>rahul@example.com</td>
+                                    <td>75%</td>
+                                    <td><button class="btn">View Profile</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Reports Tab -->
+                <div class="tab-content" id="reports">
+                    <div class="dashboard-cards">
+                        <div class="card">
+                            <h3>Attendance Summary</h3>
+                            <div class="info-group">
+                                <label>BCA-4A Overall Attendance</label>
+                                <span>87.5%</span>
+                            </div>
+                            <div class="info-group">
+                                <label>This Month Average</label>
+                                <span>89.2%</span>
+                            </div>
+                            <button class="btn">Generate Full Report</button>
+                        </div>
+
+                        <div class="card">
+                            <h3>Assignment Status</h3>
+                            <div class="info-group">
+                                <label>Total Assignments</label>
+                                <span>12</span>
+                            </div>
+                            <div class="info-group">
+                                <label>Average Submission Rate</label>
+                                <span>82.3%</span>
+                            </div>
+                            <button class="btn">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Admin Dashboard (Hidden by default) -->
+    <div class="admin-dashboard" id="adminDashboard">
+        <header class="dashboard-header">
+            <div class="logo">
+                <i class="fas fa-user-cog"></i>
+                <h1>VidyaPortal - Admin Dashboard</h1>
+            </div>
+            <button class="back-to-home" id="backToHomeAdmin">Home</button>
+        </header>
+        
+        <div class="dashboard-container">
+            <aside class="dashboard-sidebar">
+                <div class="user-info">
+                    <h3>Admin User</h3>
+                    <p>ID: ADM2023001</p>
+                    <p>Role: Super Administrator</p>
+                </div>
+                
+                <ul class="sidebar-menu">
+                    <li><a href="#" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="#"><i class="fas fa-check-circle"></i> Approvals</a></li>
+                    <li><a href="#"><i class="fas fa-users-cog"></i> User Management</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> System Management</a></li>
+                    <li><a href="#"><i class="fas fa-database"></i> Backup & Restore</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Reports & Analytics</a></li>
+                    <li><a href="#"><i class="fas fa-bell"></i> Notifications</a></li>
+                    <li><a href="#" id="adminLogoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </aside>
+            
+            <main class="dashboard-main">
+                <div class="welcome-banner">
+                    <h2>Welcome, Administrator!</h2>
+                    <p>Today is Tuesday, October 15, 2023. You have 12 pending approvals and 3 system notifications.</p>
+                </div>
+
+                <!-- Tabs for different functionalities -->
+                <div class="tabs">
+                    <div class="tab active" data-tab="approvals">Pending Approvals</div>
+                    <div class="tab" data-tab="management">User Management</div>
+                    <div class="tab" data-tab="backup">Backup & Restore</div>
+                    <div class="tab" data-tab="reports">Reports</div>
+                </div>
+
+                <!-- Approvals Tab -->
+                <div class="tab-content active" id="approvals">
+                    <div class="table-container">
+                        <h3>Pending Student Registrations</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Select</th>
+                                    <th>Application ID</th>
+                                    <th>Student Name</th>
+                                    <th>Course</th>
+                                    <th>Applied On</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><input type="checkbox" class="row-check"></td>
+                                    <td>APP20230001</td>
+                                    <td>Aarav Sharma</td>
+                                    <td>BCA</td>
+                                    <td>2023-10-12</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-success">Approve</button>
+                                        <button class="btn btn-danger">Reject</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><input type="checkbox" class="row-check"></td>
+                                    <td>APP20230002</td>
+                                    <td>Priya Patel</td>
+                                    <td>B.Com</td>
+                                    <td>2023-10-13</td>
+                                    <td><span class="status-badge status-pending">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-success">Approve</button>
+                                        <button class="btn btn-danger">Reject</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <br>
+                        <div class="form-group">
+                            <button class="btn btn-success">Approve Selected</button>
+                            <button class="btn btn-danger">Reject Selected</button>
+                            <button class="btn">View All Applications</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Management Tab -->
+                <div class="tab-content" id="management">
+                    <div class="card">
+                        <h3>Add New User</h3>
+                        <div class="form-group">
+                            <label for="admin-user-type">User Type</label>
+                            <select id="admin-user-type">
+                                <option value="student">Student</option>
+                                <option value="faculty">Faculty</option>
+                                <option value="admin">Administrator</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-user-name">Full Name</label>
+                            <input type="text" id="admin-user-name" placeholder="Enter full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-user-email">Email Address</label>
+                            <input type="email" id="admin-user-email" placeholder="Enter email address">
+                        </div>
+                        <button class="btn btn-success">Create User</button>
+                    </div>
+
+                    <div class="table-container">
+                        <h3>User Management</h3>
+                        <div class="form-group">
+                            <input type="text" placeholder="Search users by name, ID, or email">
+                            <button class="btn">Search</button>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>User ID</th>
+                                    <th>Name</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>STU2023001</td>
+                                    <td>Aarav Sharma</td>
+                                    <td>Student</td>
+                                    <td><span class="status-badge status-approved">Active</span></td>
+                                    <td>
+                                        <button class="btn">Edit</button>
+                                        <button class="btn btn-danger">Deactivate</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>FAC2023001</td>
+                                    <td>Dr. Sunil Kumar</td>
+                                    <td>Faculty</td>
+                                    <td><span class="status-badge status-approved">Active</span></td>
+                                    <td>
+                                        <button class="btn">Edit</button>
+                                        <button class="btn btn-danger">Deactivate</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Backup Tab -->
+                <div class="tab-content" id="backup">
+                    <div class="dashboard-cards">
+                        <div class="card backup-card">
+                            <div class="backup-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3>System Backup</h3>
+                            <p>Create a complete backup of the system database and files.</p>
+                            <div class="form-group">
+                                <label for="backup-name">Backup Name</label>
+                                <input type="text" id="backup-name" placeholder="Enter backup name">
+                            </div>
+                            <div class="backup-options">
+                                <button class="btn btn-success"><i class="fas fa-download"></i> Create Backup</button>
+                                <button class="btn btn-warning"><i class="fas fa-upload"></i> Restore</button>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h3>Backup Settings</h3>
+                            <div class="form-group">
+                                <label for="auto-backup">Automatic Backup</label>
+                                <select id="auto-backup">
+                                    <option value="disabled">Disabled</option>
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly">Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="backup-time">Backup Time (if automatic)</label>
+                                <input type="time" id="backup-time" value="02:00">
+                            </div>
+                            <button class="btn">Save Settings</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reports Tab -->
+                <div class="tab-content" id="reports">
+                    <div class="dashboard-cards">
+                        <div class="card">
+                            <h3>System Reports</h3>
+                            <div class="info-group">
+                                <label>Total Users</label>
+                                <span>1,245</span>
+                            </div>
+                            <div class="info-group">
+                                <label>Active Students</label>
+                                <span>985</span>
+                            </div>
+                            <div class="info-group">
+                                <label>Faculty Members</label>
+                                <span>75</span>
+                            </div>
+                            <button class="btn">Generate Full Report</button>
+                        </div>
+
+                        <div class="card">
+                            <h3>Recent Activities</h3>
+                            <div class="info-group">
+                                <label>Pending Approvals</label>
+                                <span>12 requests</span>
+                            </div>
+                            <div class="info-group">
+                                <label>New Registrations</label>
+                                <span>24 today</span>
+                            </div>
+                            <div class="info-group">
+                                <label>System Logs</label>
+                                <span>1,243 entries today</span>
+                            </div>
+                            <button class="btn">View Activity Log</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+
+    <script>
+    // ✅ YAHAN PE APNA GOOGLE APPS SCRIPT URL DALEN:
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwrCxUtW-z779eaKWjdc5ZV6C1HJVMaMc3EUU3rf862J4-Z0NZ4LHLqBFnA1_EhRURfuw/exec';
+    
+    // ✅ DEBUGGING VERSION - Data fetch function
+    async function fetchStudentProfile(studentId) {
+        try {
+            const url = `${APPS_SCRIPT_URL}?action=getStudentProfile&studentId=${studentId}`;
+            console.log('🔍 Fetching from:', url);
+            
+            const response = await fetch(url);
+            const data = await response.json();
+            
+            console.log('📦 API Response:', data);
+            return data;
+            
+        } catch (error) {
+            console.error('❌ Error fetching profile:', error);
+            return { 
+                success: false, 
+                message: 'Network error: ' + error.message 
+            };
+        }
+    }
+
+    // ✅ FIXED: Student Dashboard data loading
+    async function loadDashboardData() {
+        try {
+            console.log('🚀 Loading dashboard data...');
+            
+            const profile = await fetchStudentProfile('STU20235001');
+            console.log('📊 Profile data:', profile);
+            
+            if (profile.success && profile.data) {
+                // ✅ FIXED: Direct DOM manipulation without missing IDs
+                updateStudentDashboard(profile.data);
+            } else {
+                console.error('❌ Profile fetch failed:', profile.message);
+                // Fallback to default data
+                updateStudentDashboard({
+                    name: "Rahul Sharma",
+                    studentId: "STU20235001",
+                    course: "Bachelor of Computer Applications (BCA)", 
+                    semester: "4th",
+                    dob: "15 March 2004",
+                    email: "rahul.sharma@example.com",
+                    phone: "+91 9876543210",
+                    address: "123 Main Street, Mumbai"
+                });
+            }
+            
+        } catch (error) {
+            console.error('❌ Error in loadDashboardData:', error);
+        }
+    }
+
+    // ✅ NEW: Smart DOM updater function
+    function updateStudentDashboard(data) {
+        console.log('🔄 Updating UI with:', data);
+        
+        // 1. Update user info in sidebar
+        const userInfo = document.querySelector('.student-dashboard .user-info');
+        if (userInfo) {
+            const nameElement = userInfo.querySelector('h3');
+            const idElement = userInfo.querySelector('p');
+            if (nameElement) nameElement.textContent = data.name;
+            if (idElement) idElement.textContent = `ID: ${data.studentId}`;
+        }
+        
+        // 2. Update welcome banner
+        const welcomeBanner = document.querySelector('.student-dashboard .welcome-banner h2');
+        if (welcomeBanner) {
+            welcomeBanner.textContent = `Welcome, ${data.name}!`;
+        }
+        
+        // 3. Update academic details card
+        const cards = document.querySelectorAll('.student-dashboard .card');
+        if (cards.length > 0) {
+            const academicCard = cards[0];
+            const spans = academicCard.querySelectorAll('span');
+            if (spans.length >= 4) {
+                spans[0].textContent = data.course || 'Bachelor of Computer Applications (BCA)';
+                spans[1].textContent = (data.semester || '4th') + ' Semester';
+                // spans[2] - Batch (unchanged)
+                // spans[3] - Advisor (unchanged)
+            }
+        }
+        
+        // 4. Update personal details card  
+        if (cards.length > 1) {
+            const personalCard = cards[1];
+            const spans = personalCard.querySelectorAll('span');
+            if (spans.length >= 4) {
+                spans[0].textContent = data.dob || '15 March 2004';
+                spans[1].textContent = data.email || 'rahul.sharma@example.com';
+                spans[2].textContent = data.phone || '+91 9876543210';
+                spans[3].textContent = data.address || '123 Main Street, Mumbai';
+            }
+        }
+        
+        console.log('✅ Dashboard updated successfully!');
+    }
+
+    // ✅ Login functionality (same as before)
+    document.addEventListener('DOMContentLoaded', function() {
+        const loginLink = document.querySelector('.login-link');
+        const loginContainer = document.getElementById('loginContainer');
+        const closeLogin = document.getElementById('closeLogin');
+        const loginForm = document.getElementById('loginForm');
+        const collegeWebsite = document.getElementById('college-website');
+        const studentDashboard = document.getElementById('studentDashboard');
+        const facultyDashboard = document.getElementById('facultyDashboard');
+        const adminDashboard = document.getElementById('adminDashboard');
+        const backToHomeStudent = document.getElementById('backToHomeStudent');
+        const backToHomeFaculty = document.getElementById('backToHomeFaculty');
+        const backToHomeAdmin = document.getElementById('backToHomeAdmin');
+        const studentLogoutBtn = document.getElementById('studentLogoutBtn');
+        const facultyLogoutBtn = document.getElementById('facultyLogoutBtn');
+        const adminLogoutBtn = document.getElementById('adminLogoutBtn');
+        // Ye IDs JavaScript mein use ho rahi hain:
+const studentName = document.getElementById('studentName')        // ❌ NOT FOUND
+const studentId = document.getElementById('studentId')          // ❌ NOT FOUND  
+const studentCourse = document.getElementById('studentCourse')      // ❌ NOT FOUND
+const studentSemester = document.getElementById('studentSemester')    // ❌ NOT FOUND
+const academicCourse = document.getElementById('academicCourse')     // ❌ NOT FOUND
+const academicSemester = document.getElementById('academicSemester')   // ❌ NOT FOUND
+const academicBatch = document.getElementById('academicBatch')      // ❌ NOT FOUND
+const academicAdvisor = document.getElementById('academicAdvisor')    // ❌ NOT FOUND
+const personalDob = document.getElementById('personalDob')        // ❌ NOT FOUND
+const personalEmail = document.getElementById('personalEmail')      // ❌ NOT FOUND
+const personalPhone = document.getElementById('personalPhone')      // ❌ NOT FOUND
+const personalAddress = document.getElementById('personalAddress')    // ❌ NOT FOUND
+const attendanceOverall = document.getElementById('attendanceOverall')  // ❌ NOT FOUND
+const attendancePresent = document.getElementById('attendancePresent')  // ❌ NOT FOUND
+const attendanceAbsent = document.getElementById('attendanceAbsent')   // ❌ NOT FOUND
+const attendanceUpdated = document.getElementById('attendanceUpdated')  // ❌ NOT FOUND
+const welcomeName = document.getElementById('welcomeName')        // ❌ NOT FOUND
+        
+        // Show login form when login link is clicked
+        loginLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            loginContainer.style.display = 'flex';
+        });
+        
+        // Close login form when close button is clicked
+        closeLogin.addEventListener('click', function() {
+            loginContainer.style.display = 'none';
+        });
+        
+        // Close login form when clicking outside the login box
+        loginContainer.addEventListener('click', function(e) {
+            if (e.target === loginContainer) {
+                loginContainer.style.display = 'none';
+            }
+        });
+        
+        // Handle form submission
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const userType = document.getElementById('user-type').value;
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            // Basic validation
+            if (userType && username && password) {
+                loginContainer.style.display = 'none';
+                collegeWebsite.style.display = 'none';
+                
+                // Redirect based on user type
+                if (userType === 'student') {
+                    studentDashboard.style.display = 'block';
+                    // ✅ Load data from Google Sheets
+                    loadDashboardData();
+                } else if (userType === 'faculty') {
+                    facultyDashboard.style.display = 'block';
+                } else if (userType === 'admin') {
+                    adminDashboard.style.display = 'block';
+                }
+                
+                loginForm.reset();
+            } else {
+                alert('Please fill all fields');
+            }
+        });
+        
+        // Back to college website from student dashboard
+        backToHomeStudent.addEventListener('click', function() {
+            studentDashboard.style.display = 'none';
+            collegeWebsite.style.display = 'block';
+        });
+        
+        // Back to college website from faculty dashboard
+        backToHomeFaculty.addEventListener('click', function() {
+            facultyDashboard.style.display = 'none';
+            collegeWebsite.style.display = 'block';
+        });
+        
+        // Back to college website from admin dashboard
+        backToHomeAdmin.addEventListener('click', function() {
+            adminDashboard.style.display = 'none';
+            collegeWebsite.style.display = 'block';
+        });
+        
+        // Logout functionality for student
+        studentLogoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            studentDashboard.style.display = 'none';
+            collegeWebsite.style.display = 'block';
+        });
+        
+        // Logout functionality for faculty
+        facultyLogoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            facultyDashboard.style.display = 'none';
+            collegeWebsite.style.display = 'block';
+        });
+        
+        // Logout functionality for admin
+        adminLogoutBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            adminDashboard.style.display = 'none';
+            collegeWebsite.style.display = 'block';
+        });
+        
+        // Tab functionality for faculty and admin dashboards
+        const tabs = document.querySelectorAll('.tab');
+        const tabContents = document.querySelectorAll('.tab-content');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const target = tab.getAttribute('data-tab');
+                
+                // Remove active class from all tabs and contents
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to current tab and content
+                tab.classList.add('active');
+                document.getElementById(target).classList.add('active');
+            });
+        });
+        
+        // Set current date as default for attendance and backup
+        const today = new Date();
+        const yyyy = today.getFullYear();
+        let mm = today.getMonth() + 1;
+        let dd = today.getDate();
+        
+        if (dd < 10) dd = '0' + dd;
+        if (mm < 10) mm = '0' + mm;
+        
+        const formattedToday = `${yyyy}-${mm}-${dd}`;
+        if (document.getElementById('attendance-date')) {
+            document.getElementById('attendance-date').value = formattedToday;
+        }
+        
+        const formattedBackupName = `Backup_${yyyy}${mm}${dd}`;
+        if (document.getElementById('backup-name')) {
+            document.getElementById('backup-name').value = formattedBackupName;
+        }
+        
+        // Set due date for assignment (7 days from now)
+        const nextWeek = new Date();
+        nextWeek.setDate(nextWeek.getDate() + 7);
+        
+        const nwYYYY = nextWeek.getFullYear();
+        let nwMM = nextWeek.getMonth() + 1;
+        let nwDD = nextWeek.getDate();
+        
+        if (nwDD < 10) nwDD = '0' + nwDD;
+        if (nwMM < 10) nwMM = '0' + nwMM;
+        
+        const formattedNextWeek = `${nwYYYY}-${nwMM}-${nwDD}`;
+        if (document.getElementById('assignment-due')) {
+            document.getElementById('assignment-due').value = formattedNextWeek;
+        }
+        
+        // Navigation links (placeholder functionality)
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const page = this.getAttribute('data-page');
+                alert(`This would navigate to the ${page} page`);
+            });
+        });
+        
+        // Auto-fill demo credentials for testing
+        setTimeout(function() {
+            document.getElementById('username').value = 'student123';
+            document.getElementById('password').value = 'password123';
+        }, 500);
+    });
+</script>
+</body>
+</html>
